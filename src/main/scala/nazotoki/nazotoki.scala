@@ -32,8 +32,9 @@ object Nazotoki {
           .filter(_.forall(x => containMaster(x)))
           .filter(_.forall(x => mixGender(x)))
           .filter(_.forall(x => friends(x)))
-          .filter(_.forall(x => pair(x, "shutyou", "yukari")))
-          .filter(_.forall(x => pair(x, "rodion", "yukkiy")))
+          .filter(_.forall(x => married(x)))
+          //.filter(_.forall(x => pair(x, "shutyou", "yukari")))
+          .filter(_.forall(x => pair(x, "shutyou", "yukkiy")))
           .map(x => x.map(y => y.sortWith((a, b) => a.name > b.name))
           .sortWith((a, b) => a(0).name > b(0).name))
           .distinct
@@ -42,6 +43,8 @@ object Nazotoki {
   def containMaster(ls: List[GamePlayer]) = ls.exists(_.isMaster)
 
   def mixGender(ls: List[GamePlayer]) = ls.exists(_.isMale) && ls.exists(!_.isMale)
+
+  def married(ls: List[GamePlayer]) = ls.forall(_.isMarried) || (ls.filter(_.isMale).exists(!_.isMarried) && ls.filter(!_.isMale).exists(!_.isMarried))
 
   def friends(ls: List[GamePlayer]) = ls.forall(x => x.friends.exists(s => ls.exists(z => z.name == s)))
 
