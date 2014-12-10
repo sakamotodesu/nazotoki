@@ -33,7 +33,7 @@ object Nazotoki {
           .filter(_.forall(x => mixGender(x)))
           .filter(_.forall(x => friends(x)))
           .filter(_.forall(x => pair(x, "shutyou", "yukari")))
-          .filter(_.forall(x => pair(x, "nisshiy", "satoko")))
+          .filter(_.forall(x => pair(x, "rodion", "yukkiy")))
           .map(x => x.map(y => y.sortWith((a, b) => a.name > b.name))
           .sortWith((a, b) => a(0).name > b(0).name))
           .distinct
