@@ -28,10 +28,10 @@ object Nazotoki {
     }
   }
 
-  def balance(ns: List[Int], ls: List[GamePlayer]): List[List[List[GamePlayer]]] = group(ns, ls).filter(_.forall(x => containMaster(x))).filter(_.forall(x=>mixGender(x)))
+  def balance(ns: List[Int], ls: List[GamePlayer]): List[List[List[GamePlayer]]] = group(ns, ls).filter(_.forall(x => containMaster(x))).filter(_.forall(x => mixGender(x)))
 
   def containMaster(ls: List[GamePlayer]) = ls.exists(_.isMaster)
 
-  def mixGender(ls:List[GamePlayer]) = ls.exists(_.isMale)&& ls.exists(!_.isMale)
+  def mixGender(ls: List[GamePlayer]) = ls.exists(_.isMale) && ls.exists(!_.isMale)
 
 }
