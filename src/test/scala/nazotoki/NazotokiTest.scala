@@ -18,11 +18,11 @@ class NazotokiTest extends FunSuite {
     val nisshiy = GamePlayer("nisshiy", isMale = true, isMaster = true, List("sakamoto", "ataru", "yukkiy", "kamiya", "yukari", "ayumi", "masuda", "shutyou", "monzen"))
     val kamiya = GamePlayer("kamiya", isMale = true, isMaster = false, List("sakamoto", "ataru", "yukkiy", "nisshiy", "yukari", "ayumi", "masuda", "shutyou", "monzen"))
     val yukari = GamePlayer("yukari", isMale = false, isMaster = true, List("sakamoto", "ataru", "yukkiy", "nisshiy", "kamiya", "ayumi", "masuda", "shutyou", "monzen"))
-    val mayumi = GamePlayer("mayumi", isMale = false, isMaster = false, List("yukkiy", "satoko"))
+    val mayumi = GamePlayer("mayumi", isMale = false, isMaster = false, List("yukkiy"))
     val ayumi = GamePlayer("ayumi", isMale = false, isMaster = false, List("sakamoto", "ataru", "yukkiy", "nisshiy", "kamiya", "yukari", "masuda", "shutyou", "monzen"))
     val masuda = GamePlayer("masuda", isMale = true, isMaster = true, List("sakamoto", "ataru", "yukkiy", "nisshiy", "kamiya", "yukari", "ayumi", "shutyou", "monzen"))
     val rodion = GamePlayer("rodion", isMale = true, isMaster = false, List("sakamoto"))
-    val satoko = GamePlayer("satoko", isMale = false, isMaster = false, List("yukkiy", "mayumi"))
+    val satoko = GamePlayer("satoko", isMale = false, isMaster = false, List("yukkiy"))
     val shutyou = GamePlayer("shutyou", isMale = true, isMaster = false, List("sakamoto", "ataru", "yukkiy", "nisshiy", "kamiya", "yukari", "ayumi", "masuda", "monzen"))
     val monzen = GamePlayer("monzen", isMale = true, isMaster = true, List("sakamoto", "ataru", "yukkiy", "nisshiy", "kamiya", "yukari", "ayumi", "masuda", "shutyou"))
 
@@ -32,13 +32,23 @@ class NazotokiTest extends FunSuite {
     val groups = group(List(4, 4, 5), players)
     //groups.foreach(println _)
     println("---")
-    val ret = balance(List(4, 4, 5), players)
+
     assert(containMaster(List(sakamoto, monzen)))
     assert(!containMaster(List(sakamoto, rodion)))
     assert(mixGender(List(sakamoto, yukkiy)))
     assert(!mixGender(List(sakamoto, rodion)))
-    //ret.foreach(println _)
+
     println("---")
+    assert(friends(List(sakamoto, yukkiy)))
+    assert(!friends(List(sakamoto, mayumi)))
+    assert(!friends(List(yukari, mayumi)))
+    assert(friends(List(yukari, shutyou)))
+    assert(!pair(List(yukari, mayumi), "shutyou", "yukari"))
+    assert(pair(List(yukari, shutyou), "shutyou", "yukari"))
+    val ret = balance(List(4, 4, 5), players)
+    ret.foreach(println _)
+    println(ret.length)
+
 
   }
 }
