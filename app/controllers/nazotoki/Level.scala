@@ -1,4 +1,4 @@
-package nazotoki
+package controllers.nazotoki
 
 /**
  * Level

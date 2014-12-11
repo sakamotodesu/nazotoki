@@ -1,6 +1,7 @@
 package nazotoki
 
-import nazotoki.Nazotoki._
+import controllers.nazotoki.GamePlayer
+import controllers.nazotoki.Nazotoki._
 import org.scalatest.FunSuite
 
 /**
