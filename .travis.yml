@@ -1,4 +1,4 @@
 language: scala
 scala:
   - 2.11.4
-script: ./sbt.sh -v -211 test
+script: sh ./sbt.sh -v -211 test
