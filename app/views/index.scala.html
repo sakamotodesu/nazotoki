@@ -1,7 +1,15 @@
-@(message: String)
+@(groupListListList: List[List[List[GamePlayer]]])
 
-@main("Welcome to Play") {
+@import controllers.nazotoki.GamePlayer
 
-    @play20.welcome(message)
-
+@main("Groups List") {
+    <h3>@groupListListList.size group(s)</h3>
+    <table border="1" cellspacing=0 bordercolor="black">
+        @groupListListList.map { groupListList =>
+            <tr>
+                @groupListList.map{ playerList =><td> @playerList.map{ player => @player, }</td>
+            }
+            </tr>
+        }
+    </table>
 }

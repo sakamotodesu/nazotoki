@@ -11,3 +11,5 @@ libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.1" % "test"
 libraryDependencies ++= Seq( jdbc , anorm , cache , ws )
 
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )
+
+TwirlKeys.templateImports += "controllers.nazotoki.GamePlayer"
