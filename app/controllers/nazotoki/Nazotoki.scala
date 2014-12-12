@@ -56,4 +56,35 @@ object Nazotoki {
     if (ls.exists(_.name == boy)) ls.exists(_.name == girl)
     else if (ls.exists(_.name == girl)) ls.exists(_.name == boy)
     else true
+
+  //  1
+  //  2
+  //  3
+  //  4
+  //  5
+  //  6
+  //  7
+  //  4,4
+  //  5,4
+  //  5,5
+  //  6,5
+  //  4,4,4
+  //  5,4,4
+  //  5,5,4
+  //  5,5,5
+  //  4,4,4,4
+  //  5,4,4,4
+  //  5,5,4,4,
+  //  5,5,5,4,
+  //  4,4,4,4,4
+  //  5,4,4,4,4
+  //  5,5,4,4,4
+  //  5,5,5,4,4
+  //  4,4,4,4,4,4
+  def divide(ls: List[GamePlayer]): List[Int] = {
+    val minMembers = 4
+    val quotient = ls.length / minMembers
+    val remainder = ls.length % minMembers
+    List()
+  }
 }
