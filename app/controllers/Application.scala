@@ -1,5 +1,6 @@
 package controllers
 
+import controllers.nazotoki.GamePlayer
 import controllers.nazotoki.Nazotoki._
 import controllers.nazotoki.Players._
 import play.api.mvc._
@@ -12,4 +13,5 @@ object Application extends Controller {
     Ok(views.html.index(balance( players, friends)))
   }
 
+  def list(todayPlayers:List[Any]) = TODO
 }
