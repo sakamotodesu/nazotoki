@@ -32,13 +32,13 @@ class NazotokiTest extends FunSuite {
     assert(getFriends(satoko, friends) === List(yukkiy))
     assert(checkFriends(List(sakamoto, monzen), friends))
     assert(!checkFriends(List(sakamoto, satoko), friends))
-    val ret = balance(List(4, 4, 5), players, friends)
+    val ret = balance( players, friends)
     ret.foreach(println(_))
     println(ret.length)
   }
 
   test("divide") {
-    assert(divide(List(sakamoto)) === List()) // FIXME
+    assert(divide(List(sakamoto)) === List(1))
     println(divide(List(sakamoto, ataru, yukkiy, nisshiy, kamiya, yukari, mayumi, ayumi, masuda, rodion, satoko, shutyou, monzen)))
     println(divide(List(sakamoto, ataru, yukkiy, nisshiy, kamiya, yukari, mayumi, ayumi, masuda, rodion, satoko, shutyou)))
     println(divide(List(sakamoto, ataru, yukkiy, nisshiy, kamiya, yukari, mayumi, ayumi, masuda, rodion, satoko)))
