@@ -1,0 +1,13 @@
+@(hogeForm: Form[(Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)],players:List[GamePlayer])
+@import controllers.nazotoki.GamePlayer
+
+@import helper._
+
+@main("ListTest") {
+    @helper.form(action = routes.Application.result()) {
+        @* @checkbox(hogeForm("firstName"),'_text->"first",'_help->"")*@
+        @* @checkbox(hogeForm("lastName"),'_text->"last",'_help->"")*@
+        @players.map{player => @checkbox(hogeForm(player.name),'_text->"",'_help->"")}
+        <input type="submit" value="list!">
+    }
+}
