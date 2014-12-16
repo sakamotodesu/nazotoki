@@ -53,9 +53,9 @@ object Application extends Controller {
     val players14 = if (monzenBoolean) monzen :: players13 else players13
 
     val masterF = if(enableMaster) containMaster _ else dummyF
-    val genderF = if(enableMaster) mixGender _ else dummyF
-    val friendsF = if(enableMaster) checkFriends _ else dummyFF
-    val marriedF = if(enableMaster) married _ else dummyF
+    val genderF = if(enableGender) mixGender _ else dummyF
+    val friendsF = if(enableFriends) checkFriends _ else dummyFF
+    val marriedF = if(enableMarried) married _ else dummyF
 
     Ok(views.html.index(balance(players14, friends,masterF,genderF,friendsF,marriedF)))
   }
