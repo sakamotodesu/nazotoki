@@ -1,12 +1,16 @@
-@(hogeForm: Form[(Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)],players:List[GamePlayer])
+@(hogeForm: Form[(Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)],players:List[GamePlayer])
 @import controllers.nazotoki.GamePlayer
 
 @import helper._
 
 @main("ListTest") {
     @helper.form(action = routes.Application.result()) {
-        @* @checkbox(hogeForm("firstName"),'_text->"first",'_help->"")*@
-        @* @checkbox(hogeForm("lastName"),'_text->"last",'_help->"")*@
+        <h3>Config</h3>
+        @checkbox(hogeForm("enableMaster"),'_text->"必ず経験者がいる",'_help->"")
+        @checkbox(hogeForm("enableGender"),'_text->"必ず男女混合にする",'_help->"")
+        @checkbox(hogeForm("enableFriends"),'_text->"必ず友人がいる",'_help->"")
+        @checkbox(hogeForm("enableMarried"),'_text->"必ず未婚の異性がいる",'_help->"")
+        <h3>Today player</h3>
         @players.map{player => @checkbox(hogeForm(player.name),'_text->"",'_help->"")}
         <input type="submit" value="list!">
     }

@@ -31,15 +31,29 @@ object Nazotoki {
   def balance(ls: List[GamePlayer], friends: List[(GamePlayer, GamePlayer)]): List[List[List[GamePlayer]]] = {
     val ns = divide(ls)
     group(ns, ls)
-      .filter(_.forall(x => containMaster(x)))
-      .filter(_.forall(x => mixGender(x)))
-      .filter(_.forall(x => checkFriends(x, friends)))
-      .filter(_.forall(x => married(x)))
-      .filter(_.forall(x => pair(x, "shutyou", "yukari")))
-      //.filter(_.forall(x => pair(x, "shutyou", "yukkiy")))
-      .map(x => x.map(y => y.sortWith((a, b) => a.name > b.name))
-      .sortWith((a, b) => a(0).name > b(0).name))
-      .distinct
+            .filter(_.forall(x => containMaster(x)))
+            .filter(_.forall(x => mixGender(x)))
+            .filter(_.forall(x => checkFriends(x, friends)))
+            .filter(_.forall(x => married(x)))
+            .filter(_.forall(x => pair(x, "shutyou", "yukari")))
+            //.filter(_.forall(x => pair(x, "shutyou", "yukkiy")))
+            .map(x => x.map(y => y.sortWith((a, b) => a.name > b.name))
+            .sortWith((a, b) => a(0).name > b(0).name))
+            .distinct
+  }
+
+  def balance(ls: List[GamePlayer], friends: List[(GamePlayer, GamePlayer)],masterF: (List[GamePlayer]) => Boolean,genderF: (List[GamePlayer]) => Boolean,friendsF: (List[GamePlayer],List[(GamePlayer, GamePlayer)]) => Boolean,marriedF: (List[GamePlayer]) => Boolean): List[List[List[GamePlayer]]] = {
+    val ns = divide(ls)
+    group(ns, ls)
+            .filter(_.forall(x => masterF(x)))
+            .filter(_.forall(x => genderF(x)))
+            .filter(_.forall(x => friendsF(x, friends)))
+            .filter(_.forall(x => marriedF(x)))
+            .filter(_.forall(x => pair(x, "shutyou", "yukari")))
+            //.filter(_.forall(x => pair(x, "shutyou", "yukkiy")))
+            .map(x => x.map(y => y.sortWith((a, b) => a.name > b.name))
+            .sortWith((a, b) => a(0).name > b(0).name))
+            .distinct
   }
 
   def containMaster(ls: List[GamePlayer]) = ls.exists(_.isMaster)
@@ -87,16 +101,16 @@ object Nazotoki {
     val minMembers = 4
     val quotient = ls.length / minMembers
     val remainder = ls.length % minMembers
-    if(quotient==0){
+    if (quotient == 0) {
       List(remainder)
-    }else {
+    } else {
       val full = List.fill(quotient)(minMembers)
 
       def flat(members: List[Int], r: Int): List[Int] = {
         r match {
           case 0 => members
           case n => val i = members.indexOf(members.min)
-            flat(members.updated(i,members(i)+1), r - 1)
+            flat(members.updated(i, members(i) + 1), r - 1)
         }
       }
       flat(full, remainder)
