@@ -9,8 +9,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap 101 Template</title>
-
             <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
             <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
             <!--[if lt IE 9]>
@@ -29,18 +27,49 @@
 
 
         @helper.form(action = routes.Application.result()) {
-            <h3>Config</h3>
-            <input class="to-labelauty" id="enableMaster" name="enableMaster"  type="checkbox" data-labelauty="経験者が居なくてもいい|必ず経験者がいる" value="true" checked/>
-            <input class="to-labelauty" id="enableGender" name="enableGender"  type="checkbox" data-labelauty="男女混合じゃなくてもいい|必ず男女混合にする" value="true" checked/>
-            <input class="to-labelauty" id="enableFriends" name="enableFriends"  type="checkbox" data-labelauty="友人が居なくてもいい|必ず友人がいる" value="true" checked/>
-            <input class="to-labelauty" id="enableMarried" name="enableMarried"  type="checkbox" data-labelauty="未婚の異性が居なくてもいい|必ず未婚の異性がいる" value="true" checked/>
-            @* @checkbox(hogeForm("enableMaster"),'_text->"必ず経験者がいる",'_help->"")*@
-            @* @checkbox(hogeForm("enableGender"),'_text->"必ず男女混合にする",'_help->"")*@
-            @* @checkbox(hogeForm("enableFriends"),'_text->"必ず友人がいる",'_help->"")*@
-            @* @checkbox(hogeForm("enableMarried"),'_text->"必ず未婚の異性がいる",'_help->"")*@
-            <h3>Today player</h3>
-            @players.map{player => @checkbox(hogeForm(player.name),'_text->"",'_help->"")}
-            <input type="submit" value="list!">
+            <div class="row">
+                <div class="col-md-1">
+                <h3>Config</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <input class="to-labelauty" id="enableMaster" name="enableMaster"  type="checkbox" data-labelauty="経験者が居なくてもいい|必ず経験者がいる" value="true" checked/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <input class="to-labelauty" id="enableGender" name="enableGender"  type="checkbox" data-labelauty="男女混合じゃなくてもいい|必ず男女混合にする" value="true" checked/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <input class="to-labelauty" id="enableFriends" name="enableFriends"  type="checkbox" data-labelauty="友人が居なくてもいい|必ず友人がいる" value="true" checked/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <input class="to-labelauty" id="enableMarried" name="enableMarried"  type="checkbox" data-labelauty="未婚の異性が居なくてもいい|必ず未婚の異性がいる" value="true" checked/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <h3>TodayPlayer</h3>
+                </div>
+            </div>
+            @players.map{player =>
+                <div class="row">
+                    <div class="col-md-1">
+                        <input class="to-labelauty" id="@player.name" name="@player.name"  type="checkbox" data-labelauty="@player.name" value="true" checked/>
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-default btn-lg"">LIST!</button>
+                </div>
+            </div>
+
             }
     </body>
     <script>
