@@ -15,21 +15,21 @@ class NazotokiTest extends FunSuite {
   }
 
   test("grouping player") {
-    val players = List(sakamoto, ataru, yukkiy, nisshiy, kamiya, yukari, mayumi, ayumi, masuda, rodion, satoko, shutyou, monzen)
-    assert(containMaster(List(sakamoto, monzen)))
+    val players = List(sakamoto, ataru, yukkiy, nisshiy, kamiya, yukari, mayumi, ayumi, masuda, rodion, satoko, shutyou, kai)
+    assert(containMaster(List(sakamoto, kai)))
     assert(!containMaster(List(sakamoto, rodion)))
     assert(mixGender(List(sakamoto, yukkiy)))
     assert(!mixGender(List(sakamoto, rodion)))
     assert(!pair(List(yukari, mayumi), "shutyou", "yukari"))
     assert(pair(List(yukari, shutyou), "shutyou", "yukari"))
     assert(married(List(yukari, shutyou)))
-    assert(!married(List(yukari, monzen)))
-    assert(married(List(ayumi, monzen)))
-    assert(!married(List(sakamoto, monzen)))
-    assert(married(List(sakamoto, monzen, yukkiy)))
-    assert(getFriends(sakamoto, friends) === List(yukkiy, yukari, shutyou, rodion, nisshiy, monzen, masuda, kamiya, ayumi, ataru))
+    assert(!married(List(yukari, kai)))
+    assert(married(List(ayumi, kai)))
+    assert(!married(List(sakamoto, kai)))
+    assert(married(List(sakamoto, kai, yukkiy)))
+    assert(getFriends(sakamoto, friends) === List(yukkiy, yukari, shutyou, rodion, nisshiy, masuda, kamiya, kai, ayumi, ataru))
     assert(getFriends(satoko, friends) === List(yukkiy))
-    assert(checkFriends(List(sakamoto, monzen), friends))
+    assert(checkFriends(List(sakamoto, kai), friends))
     assert(!checkFriends(List(sakamoto, satoko), friends))
     val ret = balance(players, friends)
     ret.foreach(println(_))
@@ -37,7 +37,7 @@ class NazotokiTest extends FunSuite {
   }
 
   test("divide") {
-    assert(divide(List(sakamoto, ataru, yukkiy, nisshiy, kamiya, yukari, mayumi, ayumi, masuda, rodion, satoko, shutyou, monzen)) === List(5, 4, 4))
+    assert(divide(List(sakamoto, ataru, yukkiy, nisshiy, kamiya, yukari, mayumi, ayumi, masuda, rodion, satoko, shutyou, kai)) === List(5, 4, 4))
     assert(divide(List(sakamoto, ataru, yukkiy, nisshiy, kamiya, yukari, mayumi, ayumi, masuda, rodion, satoko, shutyou)) === List(4, 4, 4))
     assert(divide(List(sakamoto, ataru, yukkiy, nisshiy, kamiya, yukari, mayumi, ayumi, masuda, rodion, satoko)) === List(6, 5))
     assert(divide(List(sakamoto, ataru, yukkiy, nisshiy, kamiya, yukari, mayumi, ayumi, masuda, rodion)) === List(5, 5))

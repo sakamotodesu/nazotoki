@@ -32,7 +32,7 @@ object Application extends Controller {
     rodionBoolean,
     satokoBoolean,
     shutyouBoolean,
-    monzenBoolean,
+    kaiBoolean,
     enableMaster,
     enableGender,
     enableFriends,
@@ -50,7 +50,7 @@ object Application extends Controller {
     val players11 = if (rodionBoolean) rodion :: players10 else players10
     val players12 = if (satokoBoolean) satoko :: players11 else players11
     val players13 = if (shutyouBoolean) shutyou :: players12 else players12
-    val players14 = if (monzenBoolean) monzen :: players13 else players13
+    val players14 = if (kaiBoolean) kai :: players13 else players13
 
     val masterF = if(enableMaster) containMaster _ else dummyF
     val genderF = if(enableGender) mixGender _ else dummyF
@@ -77,7 +77,7 @@ object Application extends Controller {
       rodion.name -> boolean,
       satoko.name -> boolean,
       shutyou.name -> boolean,
-      monzen.name -> boolean,
+      kai.name -> boolean,
       "enableMaster" -> boolean,
       "enableGender" -> boolean,
       "enableFriends" -> boolean,
