@@ -3,15 +3,50 @@
 
 @import helper._
 
+
 @main("ListTest") {
-    @helper.form(action = routes.Application.result()) {
-        <h3>Config</h3>
-        @checkbox(hogeForm("enableMaster"),'_text->"必ず経験者がいる",'_help->"")
-        @checkbox(hogeForm("enableGender"),'_text->"必ず男女混合にする",'_help->"")
-        @checkbox(hogeForm("enableFriends"),'_text->"必ず友人がいる",'_help->"")
-        @checkbox(hogeForm("enableMarried"),'_text->"必ず未婚の異性がいる",'_help->"")
-        <h3>Today player</h3>
-        @players.map{player => @checkbox(hogeForm(player.name),'_text->"",'_help->"")}
-        <input type="submit" value="list!">
-    }
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap 101 Template</title>
+
+            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-theme.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/jquery-labelauty.css")">
+
+    </head>
+    <body>
+        <script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery-1.11.1.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery-labelauty.js")" type="text/javascript"></script>
+
+
+        @helper.form(action = routes.Application.result()) {
+            <h3>Config</h3>
+            <input class="to-labelauty" id="enableMaster" name="enableMaster"  type="checkbox" data-labelauty="経験者が居なくてもいい|必ず経験者がいる" value="true" checked/>
+            <input class="to-labelauty" id="enableGender" name="enableGender"  type="checkbox" data-labelauty="男女混合じゃなくてもいい|必ず男女混合にする" value="true" checked/>
+            <input class="to-labelauty" id="enableFriends" name="enableFriends"  type="checkbox" data-labelauty="友人が居なくてもいい|必ず友人がいる" value="true" checked/>
+            <input class="to-labelauty" id="enableMarried" name="enableMarried"  type="checkbox" data-labelauty="未婚の異性が居なくてもいい|必ず未婚の異性がいる" value="true" checked/>
+            @* @checkbox(hogeForm("enableMaster"),'_text->"必ず経験者がいる",'_help->"")*@
+            @* @checkbox(hogeForm("enableGender"),'_text->"必ず男女混合にする",'_help->"")*@
+            @* @checkbox(hogeForm("enableFriends"),'_text->"必ず友人がいる",'_help->"")*@
+            @* @checkbox(hogeForm("enableMarried"),'_text->"必ず未婚の異性がいる",'_help->"")*@
+            <h3>Today player</h3>
+            @players.map{player => @checkbox(hogeForm(player.name),'_text->"",'_help->"")}
+            <input type="submit" value="list!">
+            }
+    </body>
+    <script>
+    $(document).ready(function(){
+    $(".to-labelauty").labelauty({ minimum_width: "200px" });
+    $(".to-labelauty-icon").labelauty({ label: true });
+    });
+    </script>
 }
