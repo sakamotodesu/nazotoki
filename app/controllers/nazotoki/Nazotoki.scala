@@ -42,15 +42,14 @@ object Nazotoki {
             .distinct
   }
 
-  def balance(ls: List[GamePlayer], friends: List[(GamePlayer, GamePlayer)],masterF: (List[GamePlayer]) => Boolean,genderF: (List[GamePlayer]) => Boolean,friendsF: (List[GamePlayer],List[(GamePlayer, GamePlayer)]) => Boolean,marriedF: (List[GamePlayer]) => Boolean): List[List[List[GamePlayer]]] = {
+  def balance(ls: List[GamePlayer], friends: List[(GamePlayer, GamePlayer)],masterF: (List[GamePlayer]) => Boolean,genderF: (List[GamePlayer]) => Boolean,friendsF: (List[GamePlayer],List[(GamePlayer, GamePlayer)]) => Boolean,marriedF: (List[GamePlayer]) => Boolean,pairF:(List[GamePlayer],String,String)=>Boolean): List[List[List[GamePlayer]]] = {
     val ns = divide(ls)
     group(ns, ls)
             .filter(_.forall(x => masterF(x)))
             .filter(_.forall(x => genderF(x)))
             .filter(_.forall(x => friendsF(x, friends)))
             .filter(_.forall(x => marriedF(x)))
-            .filter(_.forall(x => pair(x, "shutyou", "yukari")))
-            //.filter(_.forall(x => pair(x, "shutyou", "yukkiy")))
+            .filter(_.forall(x => pairF(x, "shutyou", "yukari")))
             .map(x => x.map(y => y.sortWith((a, b) => a.name > b.name))
             .sortWith((a, b) => a(0).name > b(0).name))
             .distinct

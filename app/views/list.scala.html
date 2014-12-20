@@ -1,4 +1,4 @@
-@(hogeForm: Form[(Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)],players:List[GamePlayer])
+@(hogeForm: Form[(Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)],players:List[GamePlayer])
 @import controllers.nazotoki.GamePlayer
 
 @import helper._
@@ -50,6 +50,11 @@
             <div class="row">
                 <div class="col-md-1">
                     <input class="to-labelauty" id="enableMarried" name="enableMarried"  type="checkbox" data-labelauty="未婚の異性が居なくてもいい|必ず未婚の異性がいる" value="true" checked/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <input class="to-labelauty" id="enablePair" name="enablePair"  type="checkbox" data-labelauty="ゆかり・酋長が同じグループじゃなくてもいい|ゆかり・酋長が同じグループ" value="true" checked/>
                 </div>
             </div>
             <div class="row">

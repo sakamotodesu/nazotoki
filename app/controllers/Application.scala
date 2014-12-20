@@ -36,7 +36,8 @@ object Application extends Controller {
     enableMaster,
     enableGender,
     enableFriends,
-    enableMarried) = test01Form.bindFromRequest.get
+    enableMarried,
+    enablePair) = test01Form.bindFromRequest.get
     val players1 = Nil
     val players2 = if (sakamotoBoolean) sakamoto :: players1 else players1
     val players3 = if (ataruBoolean) ataru :: players2 else players2
@@ -56,14 +57,16 @@ object Application extends Controller {
     val genderF = if(enableGender) mixGender _ else dummyF
     val friendsF = if(enableFriends) checkFriends _ else dummyFF
     val marriedF = if(enableMarried) married _ else dummyF
+    val pairF = if(enablePair) pair _ else dummyFFF
 
-    Ok(views.html.index(balance(players14, friends,masterF,genderF,friendsF,marriedF)))
+    Ok(views.html.index(balance(players14, friends,masterF,genderF,friendsF,marriedF,pairF)))
   }
 
 
   val  dummyF = (ls: List[GamePlayer]) => true
   val dummyFF =  (ls: List[GamePlayer], friends: List[(GamePlayer, GamePlayer)]) =>true
-
+//            .filter(_.forall(x => pair(x, "shutyou", "yukari")))
+  val dummyFFF = (ls:List[GamePlayer],boy:String,girl:String)=>true
   val test01Form = Form(
     tuple(sakamoto.name -> boolean,
       ataru.name -> boolean,
@@ -81,6 +84,7 @@ object Application extends Controller {
       "enableMaster" -> boolean,
       "enableGender" -> boolean,
       "enableFriends" -> boolean,
-      "enableMarried" -> boolean)
+      "enableMarried" -> boolean,
+      "enablePair" -> boolean)
   )
 }
