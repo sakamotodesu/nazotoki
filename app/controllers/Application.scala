@@ -21,23 +21,23 @@ object Application extends Controller {
 
   def result = Action { implicit request =>
     val (sakamotoBoolean,
-    ataruBoolean,
-    yukkiyBoolean,
-    nisshiyBoolean,
-    kamiyaBoolean,
-    yukariBoolean,
-    mayumiBoolean,
-    ayumiBoolean,
-    masudaBoolean,
-    rodionBoolean,
-    satokoBoolean,
-    shutyouBoolean,
-    kaiBoolean,
-    enableMaster,
-    enableGender,
-    enableFriends,
-    enableMarried,
-    enablePair) = test01Form.bindFromRequest.get
+      ataruBoolean,
+      yukkiyBoolean,
+      nisshiyBoolean,
+      kamiyaBoolean,
+      yukariBoolean,
+      mayumiBoolean,
+      ayumiBoolean,
+      masudaBoolean,
+      rodionBoolean,
+      satokoBoolean,
+      shutyouBoolean,
+      kaiBoolean,
+      enableMaster,
+      enableGender,
+      enableFriends,
+      enableMarried,
+      enablePair) = test01Form.bindFromRequest.get
     val players1 = Nil
     val players2 = if (sakamotoBoolean) sakamoto :: players1 else players1
     val players3 = if (ataruBoolean) ataru :: players2 else players2
@@ -53,20 +53,19 @@ object Application extends Controller {
     val players13 = if (shutyouBoolean) shutyou :: players12 else players12
     val players14 = if (kaiBoolean) kai :: players13 else players13
 
-    val masterF = if(enableMaster) containMaster _ else dummyF
-    val genderF = if(enableGender) mixGender _ else dummyF
-    val friendsF = if(enableFriends) checkFriends _ else dummyFF
-    val marriedF = if(enableMarried) married _ else dummyF
-    val pairF = if(enablePair) pair _ else dummyFFF
+    val masterF = if (enableMaster) containMaster _ else dummyF
+    val genderF = if (enableGender) mixGender _ else dummyF
+    val friendsF = if (enableFriends) checkFriends _ else dummyFF
+    val marriedF = if (enableMarried) married _ else dummyF
+    val pairF = if (enablePair) pair _ else dummyFFF
 
-    Ok(views.html.index(balance(players14, friends,masterF,genderF,friendsF,marriedF,pairF)))
+    Ok(views.html.index(balance(players14, friends, masterF, genderF, friendsF, marriedF, pairF)))
   }
 
-
-  val  dummyF = (ls: List[GamePlayer]) => true
-  val dummyFF =  (ls: List[GamePlayer], friends: List[(GamePlayer, GamePlayer)]) =>true
-//            .filter(_.forall(x => pair(x, "shutyou", "yukari")))
-  val dummyFFF = (ls:List[GamePlayer],boy:String,girl:String)=>true
+  val dummyF = (ls: List[GamePlayer]) => true
+  val dummyFF = (ls: List[GamePlayer], friends: List[(GamePlayer, GamePlayer)]) => true
+  //            .filter(_.forall(x => pair(x, "shutyou", "yukari")))
+  val dummyFFF = (ls: List[GamePlayer], boy: String, girl: String) => true
   val test01Form = Form(
     tuple(sakamoto.name -> boolean,
       ataru.name -> boolean,

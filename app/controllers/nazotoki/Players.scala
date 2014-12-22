@@ -1,20 +1,19 @@
 package controllers.nazotoki
 
-
 object Players {
-  val sakamoto = GamePlayer("sakamoto", "阪本",isMale = true, isMaster = false, isMarried = false)
-  val ataru = GamePlayer("ataru", "あたる",isMale = true, isMaster = false, isMarried = true)
-  val yukkiy = GamePlayer("yukkiy", "ゆっきー",isMale = false, isMaster = true, isMarried = false)
-  val nisshiy = GamePlayer("nisshiy", "にっしー",isMale = true, isMaster = true, isMarried = false)
-  val kamiya = GamePlayer("kamiya", "神谷",isMale = true, isMaster = false, isMarried = true)
-  val yukari = GamePlayer("yukari", "ゆかり",isMale = false, isMaster = true, isMarried = false)
-  val mayumi = GamePlayer("mayumi", "まゆみ",isMale = false, isMaster = true, isMarried = false)
-  val ayumi = GamePlayer("ayumi", "あゆみ",isMale = false, isMaster = false, isMarried = true)
-  val masuda = GamePlayer("masuda", "増田",isMale = true, isMaster = true, isMarried = false)
-  val rodion = GamePlayer("rodion", "ロディオン",isMale = true, isMaster = false, isMarried = true)
-  val satoko = GamePlayer("satoko", "さとこ",isMale = false, isMaster = false, isMarried = false)
-  val shutyou = GamePlayer("shutyou", "酋長",isMale = true, isMaster = false, isMarried = false)
-  val kai = GamePlayer("kai", "絵",isMale = true, isMaster = true, isMarried = true)
+  val sakamoto = GamePlayer("sakamoto", "阪本", isMale = true, isMaster = false, isMarried = false)
+  val ataru = GamePlayer("ataru", "あたる", isMale = true, isMaster = false, isMarried = true)
+  val yukkiy = GamePlayer("yukkiy", "ゆっきー", isMale = false, isMaster = true, isMarried = false)
+  val nisshiy = GamePlayer("nisshiy", "にっしー", isMale = true, isMaster = true, isMarried = false)
+  val kamiya = GamePlayer("kamiya", "神谷", isMale = true, isMaster = false, isMarried = true)
+  val yukari = GamePlayer("yukari", "ゆかり", isMale = false, isMaster = true, isMarried = false)
+  val mayumi = GamePlayer("mayumi", "まゆみ", isMale = false, isMaster = true, isMarried = false)
+  val ayumi = GamePlayer("ayumi", "あゆみ", isMale = false, isMaster = false, isMarried = true)
+  val masuda = GamePlayer("masuda", "増田", isMale = true, isMaster = true, isMarried = false)
+  val rodion = GamePlayer("rodion", "ロディオン", isMale = true, isMaster = false, isMarried = true)
+  val satoko = GamePlayer("satoko", "さとこ", isMale = false, isMaster = false, isMarried = false)
+  val shutyou = GamePlayer("shutyou", "酋長", isMale = true, isMaster = false, isMarried = false)
+  val kai = GamePlayer("kai", "絵", isMale = true, isMaster = true, isMarried = true)
 
   val friends = List((sakamoto, ataru),
     (sakamoto, yukkiy), (sakamoto, nisshiy), (sakamoto, kamiya), (sakamoto, yukari), (sakamoto, ayumi), (sakamoto, masuda), (sakamoto, rodion), (sakamoto, shutyou), (sakamoto, kai),
